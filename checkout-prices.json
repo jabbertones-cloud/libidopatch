@@ -1,0 +1,35 @@
+{
+  "stripeAccount": "acct_1ReSk1KCahDryrU4",
+  "productId": "prod_U4o7YNF5Vbt0Dm",
+  "currency": "usd",
+  "tiers": [
+    {
+      "packs": 1,
+      "amount": 849,
+      "priceId": "price_1TutBZKCahDryrU4trqDhyLV",
+      "paymentLinkId": "plink_1TutpfKCahDryrU4b7ZfUBO7",
+      "url": "https://buy.stripe.com/aFaeVec9tbN6bsK8m20001u"
+    },
+    {
+      "packs": 2,
+      "amount": 1499,
+      "priceId": "price_1TutBaKCahDryrU4ojkWGlii",
+      "paymentLinkId": "plink_1TuttMKCahDryrU4EyBdhOhJ",
+      "url": "https://buy.stripe.com/8x2dRa7Td04ofJ08m20001v"
+    },
+    {
+      "packs": 3,
+      "amount": 1999,
+      "priceId": "price_1TutBaKCahDryrU4uiwr76LK",
+      "paymentLinkId": "plink_1TutvJKCahDryrU40CdqT6ka",
+      "url": "https://buy.stripe.com/00wbJ25L54kE1Sa9q60001w"
+    },
+    {
+      "packs": 4,
+      "amount": 2499,
+      "priceId": "price_1TutBaKCahDryrU4Y4YxOsvr",
+      "paymentLinkId": "plink_1TutwZKCahDryrU4YU5LPJaC",
+      "url": "https://buy.stripe.com/28E6oI7Td04o7cu1XE0001x"
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+name: Repair Libidopatch DNS
+on:
+  workflow_dispatch:
+jobs:
+  repair:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - name: Route custom domains to Cloudflare Pages
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+        run: bash scripts/ensure-cloudflare-dns.sh

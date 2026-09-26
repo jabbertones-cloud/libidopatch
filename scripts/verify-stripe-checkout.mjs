@@ -4,6 +4,7 @@ const root = new URL("../", import.meta.url);
 const manifest = JSON.parse(await readFile(new URL("checkout-prices.json", root), "utf8"));
 const html = await readFile(new URL("index.html", root), "utf8");
 const errors = [];
+const fetchWithTimeout = (url, init = {}) => fetch(url, { ...init, signal: AbortSignal.timeout(10000) });
 
 for (const tier of manifest.tiers) {
   const escapedUrl = tier.url.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
@@ -12,7 +13,7 @@ for (const tier of manifest.tiers) {
   );
   if (!cardPattern.test(html)) errors.push(`Pack ${tier.packs} does not bind its expected amount, Price ID, and Payment Link URL`);
 
-  const response = await fetch(tier.url, { redirect: "manual" });
+  const response = await fetchWithTimeout(tier.url, { redirect: "manual" });
   if (response.status < 200 || response.status >= 400) errors.push(`${tier.url} returned HTTP ${response.status}`);
 }
 
@@ -20,7 +21,7 @@ const apiKey = process.env.STRIPE_SECRET_KEY;
 if (apiKey) {
   for (const tier of manifest.tiers) {
     const query = new URLSearchParams({ "expand[]": "line_items" });
-    const response = await fetch(`https://api.stripe.com/v1/payment_links/${tier.paymentLinkId}?${query}`, {
+    const response = await fetchWithTimeout(`https://api.stripe.com/v1/payment_links/${tier.paymentLinkId}?${query}`, {
       headers: {
         Authorization: `Bearer ${apiKey}`,
         "Stripe-Account": manifest.stripeAccount

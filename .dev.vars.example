@@ -1,0 +1,6 @@
+# Server-side only. Set production values with Cloudflare Pages secrets/vars.
+STRIPE_SECRET_KEY=
+STRIPE_WEBHOOK_SECRET=
+STRIPE_ACCOUNT_ID=acct_1ReSk1KCahDryrU4
+STOREFRONT_ORDER_INGRESS_TOKEN=
+COMMERCE_OS_ORDER_INGRESS_URL=https://commerce-os.smatdesigns.workers.dev/api/storefront-orders/paid
